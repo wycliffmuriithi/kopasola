@@ -8,5 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Creater: wgicheru
  * Date:1/27/2020
  */
-public interface KopastockRepo extends JpaRepository<KopaStock,Long> {
+public interface KopastockRepo extends JpaRepository<KopaStock,Integer> {
+    int countByProductid(int productid);
+    int countByStockid(int stockid);
+    KopaStock findByProductid(int productid);
 }

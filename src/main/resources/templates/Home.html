@@ -8,13 +8,16 @@
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
 
-    <title>Registration</title>
+    <title>Home</title>
 </head>
 <body>
 <div class="container">
-    <h1>Logged In! </h1>
-    <span th:text="'Welcome: ' + ${usermodel.email}"> <a href="/" th:href="@{/login}">Logout</a></span>
+    <h1>KopaSola Store Management</h1>
+    <span th:text="'Welcome: ' + ${usermodel.email}">
 
+    </span>
+    <a href="/" th:href="@{/logout}">Logout</a>
+    <br/>
 
     <div id="exTab3" class="container">
         <ul  class="nav nav-pills">
@@ -25,75 +28,98 @@
             </li>
             <li><a href="#3b" data-toggle="tab">Sales</a>
             </li>
-            <li><a href="#4a" data-toggle="tab">Payments</a>
+            <li><a href="#4b" data-toggle="tab">Payments</a>
             </li>
         </ul>
 
         <div class="tab-content clearfix">
+
             <div class="tab-pane active" id="1b">
                 <table class="table table-striped">
                     <thead>
                     <tr>
                         <th style="width: 150px;">Name</th>
-                        <th style="width: 200px;">Address</th>
+                        <th style="width: 200px;">Description</th>
+                        <th style="width: 200px;">Price</th>
+                        <th style="width: 200px;">Date Created</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="user : ${users}">
-                        <td th:text="${user.email}"></td>
-                        <td th:text="${user.username}"></td>
+                    <tr th:each="product : ${productslist}">
+                        <td th:text="${product.name}"></td>
+                        <td th:text="${product.description}"></td>
+                        <td th:text="${product.price}"></td>
+                        <td th:text="${product.createdon}"></td>
                     </tr>
                     </tbody>
                 </table>
+                <span>Create New <a href="/" th:href="@{/newproduct}">Product</a></span>
             </div>
+
             <div class="tab-pane" id="2b">
                 <table class="table table-striped">
                     <thead>
                     <tr>
                         <th style="width: 150px;">Name</th>
-                        <th style="width: 200px;">Address</th>
-
+                        <th style="width: 200px;">Quantity</th>
+                        <th style="width: 150px;">Min Quantity</th>
+                        <th style="width: 200px;">Last Refilled</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="user : ${users}">
-                        <td th:text="${user.email}"></td>
-                        <td th:text="${user.username}"></td>
+                    <tr th:each="stock : ${stocklist}">
+                        <td th:text="${stock.productname}"></td>
+                        <td th:text="${stock.quantity}"></td>
+                        <td th:text="${stock.minquantity}"></td>
+                        <td th:text="${stock.lastorder}"></td>
                     </tr>
                     </tbody>
                 </table>
+                <span>Create New <a href="/" th:href="@{/newstock}">Stock Item</a></span>
             </div>
+
             <div class="tab-pane" id="3b">
                 <table class="table table-striped">
                     <thead>
                     <tr>
+                        <th style="width: 150px;">Order ID</th>
                         <th style="width: 150px;">Name</th>
-                        <th style="width: 200px;">Address</th>
+                        <th style="width: 200px;">Quantity</th>
+                        <th style="width: 150px;">Cost</th>
+                        <th style="width: 200px;">Date</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="user : ${users}">
-                        <td th:text="${user.email}"></td>
-                        <td th:text="${user.username}"></td>
+                    <tr th:each="sales : ${saleslist}">
+                        <td th:text="${sales.salesid}"></td>
+                        <td th:text="${sales.productname}"></td>
+                        <td th:text="${sales.quantity}"></td>
+                        <td th:text="${sales.cost}"></td>
+                        <td th:text="${sales.date}"></td>
                     </tr>
                     </tbody>
                 </table>
+                <span>Create New <a href="/" th:href="@{/newsale}">Sale</a></span>
             </div>
+
             <div class="tab-pane" id="4b">
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th style="width: 150px;">Name</th>
-                        <th style="width: 200px;">Address</th>
+                        <th style="width: 150px;">Sales Order</th>
+                        <th style="width: 150px;">Amount</th>
+                        <th style="width: 200px;">Date</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="user : ${users}">
-                        <td th:text="${user.email}"></td>
-                        <td th:text="${user.username}"></td>
+                    <tr th:each="payment : ${paymentslist}">
+                        <td th:text="${payment.orderid}"></td>
+                        <td th:text="${payment.amount}"></td>
+                        <td th:text="${payment.datepaid}"></td>
                     </tr>
                     </tbody>
                 </table>
+                <span>Create New <a href="/" th:href="@{/newpayment}">Payment</a></span>
             </div>
         </div>
     </div>

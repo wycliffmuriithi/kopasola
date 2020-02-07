@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Creater: wgicheru
  * Date:1/27/2020
  */
-public interface KopaproductsRepo extends JpaRepository<KopaProducts,Long> {
+public interface KopaproductsRepo extends JpaRepository<KopaProducts,Integer> {
     int countByName(String name);
 }

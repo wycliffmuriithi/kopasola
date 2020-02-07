@@ -1,11 +1,14 @@
 package com.kopasolar.controllers.wrappers;
 
+
+import java.io.Serializable;
+
 /**
  * Class name: UserPasswordWrapper
  * Creater: wgicheru
  * Date:1/27/2020
  */
-public class UserPasswordWrapper {
+public class UserPasswordWrapper implements Serializable {
     String email;
     int token;
     String password;

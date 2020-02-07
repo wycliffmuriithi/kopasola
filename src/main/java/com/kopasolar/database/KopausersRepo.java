@@ -10,7 +10,7 @@ import java.util.List;
  * Creater: wgicheru
  * Date:1/27/2020
  */
-public interface KopausersRepo extends JpaRepository<KopaUsers,Long> {
+public interface KopausersRepo extends JpaRepository<KopaUsers,Integer> {
     int countByUsernameOrEmail(String username,String email);
 
 
